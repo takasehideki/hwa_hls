@@ -1,9 +1,7 @@
-#define N 11
-#include "ap_int.h"
+// include ap_int.h and typedef
+#include "fir.h"
 
-typedef int coef_t;
-typedef int data_t;
-typedef int acc_t;
+#define N 11
 
 void fir(data_t *y, data_t x)
 {

@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
-void fir(int *y, int x);
+#include "fir.h"
 
 #define PREC 65536 // 2**16 sign + 15bit precision
 
@@ -13,19 +12,19 @@ int main()
 
   float f0 = 20000.0;
   float sin_wave;
-  int fir_out;
+  data_t fir_out;
 
   int i;
 
   int error = 0;
-  int fir_dat;
+  data_t fir_dat;
   FILE *fp;
   fp = fopen("./fir_tb.dat", "r");
 
   for( i = 0; i < len; i++){
     sin_wave = sin( 2.0 * M_PI * f0 * i / fs);
 
-    fir( &fir_out, (int)(sin_wave * PREC));
+    fir( &fir_out, (data_t)(sin_wave * PREC));
 
     f0 = f0 - 10.0;
 
